@@ -3,6 +3,8 @@ Puppet module to install rvm in a per user basis
 For an isolated install within a user's $HOME, not for root. Recomended by
 wayneeseguin in https://rvm.io/rvm/install
 
+NOTE: not really tested so far. For me it works in ubuntu 12.04LTS. Used in puppet 2.7 but it should also work in recent versions
+
 Install rvm in jhondoe user
 ------------------------------------------------------------------------
 NOTE: User jhondoe will be created if doesn't exist
@@ -20,7 +22,7 @@ rvm::rvmuser{"jhondoe":
 } 
 ```
 
-Install rvm in jhondoe user and also install ruby version 2.0.0-head as default ruby 
+Install ruby version 2.0.0-head and make it as default ruby version
 ------------------------------------------------------------------------
 ```ruby
 rvm::installruby{"install-ruby-to-jhondoe":
@@ -31,7 +33,7 @@ rvm::installruby{"install-ruby-to-jhondoe":
 }
 ```
 
-Create Gemset for a project called gemsetname
+Create a new gemset called gemsetname
 ------------------------------------------------------------------------
 ```ruby
 rvm::creategemset{"gemsetname":
@@ -40,6 +42,8 @@ rvm::creategemset{"gemsetname":
   homeuser = "/home/jhondoe", # Optional, defaults to /home/$user
 } 
 ```
-
-
-NOTE: not really tested so far. For me it works in ubuntu 12.04LTS. Used in puppet 2.7 but it should also work in recent versions
+Remember that a gemset is usually used to switch to a ruby
+version and a set of gems. If you write a file called .ruby-gemset with
+the content "gemsetname" and a file called .ruby-version with the content
+"ruby-1.9.3-p374" rvm will automatically switch to that ruby version with
+the gemset called 'gemsetname'. More info about this in [rvm website](https://rvm.io/gemsets)
