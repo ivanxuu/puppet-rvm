@@ -7,13 +7,16 @@ NOTE: not really tested so far. For me it works in ubuntu 12.04LTS. Used in pupp
 
 Install rvm in jhondoe user
 ------------------------------------------------------------------------
+It won't install any ruby, just rvm.
 NOTE: User jhondoe will be created if doesn't exist
 ```ruby
 rvm::rvmuser{"jhondoe":} # Install stable version of rvm for the user jhondoe, creates user if inexistent
 ```
 
-Install rvm in jhondoe user and also install ruby version 2.0.0-head as default ruby 
+Install rvm in jhondoe user and also install ruby version 2.0.0-head
 ------------------------------------------------------------------------
+Installing and compilling any ruby version can take a while (>400seconds?)
+The ruby version will be the default for this user
 ```ruby
 rvm::rvmuser{"jhondoe":
   installdefaultruby => "2.0.0-head", # Optional Indicates the version that will be
@@ -43,7 +46,8 @@ rvm::creategemset{"gemsetname":
 } 
 ```
 Remember that a gemset is usually used to switch to a ruby
-version and a set of gems. If you write a file called .ruby-gemset with
+version and a set of gems. In a directory, if you write a file called .ruby-gemset with
 the content "gemsetname" and a file called .ruby-version with the content
 "ruby-1.9.3-p374" rvm will automatically switch to that ruby version with
-the gemset called 'gemsetname'. More info about this in [rvm website](https://rvm.io/gemsets)
+the gemset called 'gemsetname' when you enter in that dir.
+More info about this in [rvm website](https://rvm.io/gemsets)
