@@ -3,7 +3,9 @@ Puppet module to install rvm in a per user basis
 For an isolated install within a user's $HOME, not for root. Recomended by
 wayneeseguin in https://rvm.io/rvm/install
 
-NOTE: not really tested so far. For me it works in ubuntu 12.04LTS. Used in puppet 2.7 but it should also work in recent versions
+Not really tested so far. For me it works in ubuntu 12.04LTS. Used in puppet 2.7 but it should also work in recent versions
+
+If you are planning of using this for a ruby on rails with capistrano probably will be a better idea to use the rvm/capistrano plugin along capistrano
 
 Install rvm in jhondoe user
 ------------------------------------------------------------------------
