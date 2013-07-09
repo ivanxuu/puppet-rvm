@@ -5,7 +5,8 @@ wayneeseguin in https://rvm.io/rvm/install
 
 Not really tested so far. For me it works in ubuntu 12.04LTS. Used in puppet 2.7 but it should also work in recent versions
 
-If you are planning of using this for a ruby on rails with capistrano probably will be a better idea to use the rvm/capistrano plugin along capistrano
+If you are planning of using this for a ruby on rails with capistrano probably will be a better idea to use the [rvm/capistrano](http://rvm.io/integration/capistrano)
+plugin along capistrano
 
 Install rvm in jhondoe user
 ------------------------------------------------------------------------
@@ -53,3 +54,4 @@ the content "gemsetname" and a file called .ruby-version with the content
 "ruby-1.9.3-p374" rvm will automatically switch to that ruby version with
 the gemset called 'gemsetname' when you enter in that dir.
 More info about this in [rvm website](https://rvm.io/gemsets)
+ 
