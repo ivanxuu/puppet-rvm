@@ -5,6 +5,13 @@ define rvm::installruby(
   $homeuser = "/home/$user",
 ){
 
+  exec{ "rvm-requirements":
+    command => "$homeuser/.rvm/bin/rvm requirements",
+    unless  => "$homeuser/.rvm/bin/rvm list |grep $rubyversion",
+    require => [ Class["rvm::rubyreq"], Exec["installrvm-$user"] ],
+    timeout => 0,
+  }->
+
   exec{ "installrubies-$user-$rubyversion":
     command => "/bin/bash --login -c 'HOME=$homeuser && rvm install $rubyversion'",
     unless => "/bin/bash --login -c 'rvm list |grep $rubyversion'",
