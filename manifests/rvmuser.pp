@@ -28,14 +28,16 @@ define rvm::rvmuser (
     }
   }
 
-  user{ "$name":
-      ensure => present,
-      shell => "/bin/bash",
-      home => "/home/$name",
-      managehome => true,
-      # groups => "www-data", # so we can set group to www-data to some dirs
-      # password => '$6$L/PLguHR7copy_here_key_from_/etc/shadow_fileB/Hq1OQjNqafIUmXU/IJXoMXXCZEi.Ye48.M1ESCpu9vHjcEvuiKERJBW.',
-      ;
+  if ! defined(User["$name"]) {
+    user{ "$name":
+        ensure => present,
+        shell => "/bin/bash",
+        home => "/home/$name",
+        managehome => true,
+        # groups => "www-data", # so we can set group to www-data to some dirs
+        # password => '$6$L/PLguHR7copy_here_key_from_/etc/shadow_fileB/Hq1OQjNqafIUmXU/IJXoMXXCZEi.Ye48.M1ESCpu9vHjcEvuiKERJBW.',
+        ;
+    }
   }
 
   # Make sure the user exist,then install rvm requirements, then get install rvm, then ruby requirements
