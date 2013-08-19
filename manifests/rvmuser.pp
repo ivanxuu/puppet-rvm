@@ -1,6 +1,7 @@
 define rvm::rvmuser (
   $installdefaultruby = false,
   $homeuser = "/home/$name",
+  $rvm_version = 'stable',
 ){
 
   include rvm::rvmreq
@@ -8,7 +9,7 @@ define rvm::rvmuser (
   include rvm::rubyreq
 
   exec{ "installrvm-$name":
-    command => "/bin/bash --login -c 'curl -L https://get.rvm.io | bash -s stable'",
+    command => "/bin/bash --login -c 'curl -L https://get.rvm.io | bash -s ${rvm_version}'",
     user => "$name",
     unless => "/bin/bash --login -c 'type rvm |head -1|grep function '",
     path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
