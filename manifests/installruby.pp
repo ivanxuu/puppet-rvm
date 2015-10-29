@@ -2,6 +2,7 @@ define rvm::installruby(
   $makedefault = false,
   $user,
   $rubyversion,
+  #$extraflags variable allows use of flags such as  --rubygems 1.4.2 --verify-downloads 1
   $extraflags = undef,
   $homeuser = "/home/$user",
 ){
