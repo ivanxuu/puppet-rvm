@@ -2,6 +2,8 @@ define rvm::installruby(
   $makedefault = false,
   $user,
   $rubyversion,
+  #$extraflags variable allows use of flags such as  --rubygems 1.4.2 --verify-downloads 1
+  $extraflags = undef,
   $homeuser = "/home/$user",
 ){
 
@@ -13,7 +15,7 @@ define rvm::installruby(
   }->
 
   exec{ "installrubies-$user-$rubyversion":
-    command => "/bin/bash --login -c 'HOME=$homeuser && rvm install $rubyversion'",
+    command => "/bin/bash --login -c 'HOME=$homeuser && rvm install $rubyversion $extraflags'",
     unless => "/bin/bash --login -c 'rvm list |grep $rubyversion'",
     user => "$user",
     environment => ["HOME=$homeuser"],
