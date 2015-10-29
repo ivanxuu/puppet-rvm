@@ -36,6 +36,7 @@ rvm::installruby{"install-ruby-to-jhondoe":
   rubyversion => "2.0.0-head", #required
   makedefault => true, #defaults to false
   homeuser = "/home/jhondoe", # Optional, defaults to /home/$user
+  extraflags  => "--verify-downloads 1", #Optional, defaults to undef
 }
 ```
 
