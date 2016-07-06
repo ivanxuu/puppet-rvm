@@ -7,7 +7,7 @@ define rvm::installruby(
   $homeuser = "/home/$user",
 ){
 
-  exec{ "rvm-requirements":
+  exec{ "rvm-requirements-$rubyversion":
     command => "$homeuser/.rvm/bin/rvm requirements",
     unless  => "$homeuser/.rvm/bin/rvm list |grep $rubyversion",
     require => [ Class["rvm::rubyreq"], Exec["installrvm-$user"] ],
