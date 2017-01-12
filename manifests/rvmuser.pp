@@ -40,7 +40,6 @@ define rvm::rvmuser (
         ;
     }
   }
-
   # Make sure the user exist,then install rvm requirements, then get install rvm, then ruby requirements
   User["$name"] -> Class["rvm::rvmreq"] -> Exec["installrvm-$name"] -> Class["rvm::rubyreq"] 
 
